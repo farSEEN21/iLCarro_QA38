@@ -11,6 +11,7 @@ public class HelpUser extends HelperBase {
     }
 
     public void logIn() {
+
         wd.findElement(By.xpath("//a[.=' Log in ']")).click();
 
     }
@@ -24,5 +25,7 @@ public class HelpUser extends HelperBase {
 
     }
 
-
+public void logout(){
+        wd.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
+}
 }
