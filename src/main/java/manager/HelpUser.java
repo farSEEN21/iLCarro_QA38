@@ -1,5 +1,6 @@
 package manager;
 
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -21,7 +22,16 @@ public class HelpUser extends HelperBase {
         fillform(By.xpath("//input[@id='password']"), psd);
         click(By.cssSelector("button[type='submit']"));
         pause(500);
-        click(By.xpath("//button[.='Ok']"));
+        wd.findElement(By.xpath("//button[.='Ok']")).submit();
+        //click(By.xpath("//button[.='Ok']"));
+
+    }public void fillformYalla(User user) {
+        fillform(By.xpath("//input[@id='email']"), user.getEmail());
+        fillform(By.xpath("//input[@id='password']"), user.getPsw());
+        click(By.cssSelector("button[type='submit']"));
+        pause(500);
+        wd.findElement(By.xpath("//button[.='Ok']")).submit();
+        //click(By.xpath("//button[.='Ok']"));
 
     }
 

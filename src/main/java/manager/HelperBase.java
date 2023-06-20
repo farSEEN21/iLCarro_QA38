@@ -3,9 +3,7 @@ package manager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.xml.sax.Locator;
 
-import javax.xml.bind.Element;
 
 public class HelperBase {
 
