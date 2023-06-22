@@ -1,5 +1,6 @@
 import manager.ApplicationManager;
 import org.openqa.selenium.By;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -26,7 +27,7 @@ public void precondition(){
         app.tears();
     }
 
-    @BeforeMethod
+    @AfterMethod
     public void postcondition(){
         app.getUsers().logout();
     }

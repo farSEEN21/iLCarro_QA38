@@ -38,4 +38,5 @@ public class HelpUser extends HelperBase {
 public void logout(){
         wd.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
 }
+
 }
