@@ -7,17 +7,7 @@ public class User {
     String email;
     String psw;
 
-//    public User(String name, String lastname, String email, String psw) {
-//        this.name = name;
-//        this.lastname = lastname;
-//        this.email = email;
-//        this.psw = psw;
-//    }
-//
-//    public User(String email, String psw) {
-//        this.email = email;
-//        this.psw = psw;
-//    }
+
 
     public String getName() {
         return name;

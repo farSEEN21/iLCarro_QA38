@@ -12,10 +12,9 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
 
 
-
     WebDriver wd;
     HelpUser users;
-HelperCar car;
+    HelperCar car;
 
     public HelpUser getUsers() {
         return users;
@@ -29,11 +28,11 @@ HelperCar car;
     @BeforeSuite
     public void init() {
         wd = new ChromeDriver();
-        users=new HelpUser(wd);
-        car=new HelperCar(wd);
+        users = new HelpUser(wd);
+        car = new HelperCar(wd);
         wd.manage().window().maximize();
         wd.navigate().to("https://ilcarro.web.app/search");
-        wd.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
     }
 
@@ -41,9 +40,8 @@ HelperCar car;
     @AfterSuite
     public void tears() {
 
-     //   wd.quit();
+        //   wd.quit();
     }
-
 
 
 }

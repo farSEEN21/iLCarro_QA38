@@ -11,7 +11,8 @@ public class AddNewCar extends TestBase{
 
     @BeforeMethod
     public void precon(){
-        if (app.getUsers().isElementPresent(By.xpath("//a[.=' Log in ']"))) app.getUsers().Login(new User().withEmail("xcvv@df.ru").withPsw("x2fd34tjCp!"));
+        if (app.getUsers().isLogged()==false) app.getUsers().login(
+                new User().withEmail("xcvv@df.ru").withPsw("x2fd34tjCp!"));
     }
 
 
@@ -31,8 +32,8 @@ public class AddNewCar extends TestBase{
                 .about("s")
                 .build();
 app.getCar().openFormCar();
-app.getCar().FillForm(car);
-app.getUsers().click(By.xpath("//button[normalize-space()='Submit']"));
+app.getCar().fillCarForm(car);
+app.getUsers().submitLogin();
     }
 
 
