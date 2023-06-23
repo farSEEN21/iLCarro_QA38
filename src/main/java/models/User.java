@@ -72,6 +72,6 @@ public class User {
 
     public User withPsw(String psw) {
         this.psw = psw;
-    return this
+    return this;
     }
 }

@@ -8,14 +8,7 @@ import org.testng.annotations.BeforeSuite;
 public class TestBase  {
 
  static    ApplicationManager app=new ApplicationManager();
- @BeforeMethod
-public void precondition(){
 
-         if (app.getUsers().isElementPresent(By.xpath("//a[contains(text(),'Logout')]"))) {
-             app.getUsers().logout();
-         }
-
- }
     @BeforeSuite
     public void setUp() {
         app.init();
@@ -27,8 +20,4 @@ public void precondition(){
         app.tears();
     }
 
-    @AfterMethod
-    public void postcondition(){
-        app.getUsers().logout();
-    }
 }
