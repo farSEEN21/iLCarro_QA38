@@ -1,6 +1,7 @@
 package manager;
 
 import models.User;
+import models.UserLombok;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -44,10 +45,17 @@ public class HelpUser extends HelperBase {
 
     }
 public void fillRegistrationForm(User user){
-        type(By.xpath("//input[@id='name'"), user.getName());
-        type(By.xpath("//input[@id='lastName'"), user.getLastname());
-        type(By.xpath("//input[@id='email'"), user.getEmail());
-        type(By.xpath("//input[@id='password'"), user.getPsw());
+        type(By.xpath("//input[@id='name']"), user.getName());
+        type(By.xpath("//input[@id='lastName']"), user.getLastname());
+        type(By.xpath("//input[@id='email']"), user.getEmail());
+        type(By.xpath("//input[@id='password']"), user.getPsw());
+        click(By.cssSelector("label[for='terms-of-use']"));
+}
+public void fillRegistrationForm(UserLombok user){
+        type(By.xpath("//input[@id='name']"), user.getName());
+        type(By.xpath("//input[@id='lastName']"), user.getLastname());
+        type(By.xpath("//input[@id='email']"), user.getEmail());
+        type(By.xpath("//input[@id='password']"), user.getPsw());
         click(By.cssSelector("label[for='terms-of-use']"));
 }
 //    public void logout() {
