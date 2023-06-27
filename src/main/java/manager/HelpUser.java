@@ -3,7 +3,10 @@ package manager;
 import models.User;
 import models.UserLombok;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -44,26 +47,47 @@ public class HelpUser extends HelperBase {
 //         click(By.xpath("//button[.='Ok']"));
 
     }
-public void fillRegistrationForm(User user){
+
+    public void fillRegistrationForm(User user) {
         type(By.xpath("//input[@id='name']"), user.getName());
         type(By.xpath("//input[@id='lastName']"), user.getLastname());
         type(By.xpath("//input[@id='email']"), user.getEmail());
         type(By.xpath("//input[@id='password']"), user.getPsw());
-        click(By.cssSelector("label[for='terms-of-use']"));
-}
-public void fillRegistrationForm(UserLombok user){
+        clickCheckbox();
+    }
+
+    public void clickCheckbox() {
+        System.out.println("Hello");
+//  var 1  click(By.cssSelector("label[for='terms-of-use']"));
+
+        //var 2      JavascriptExecutor js = (JavascriptExecutor) wd;
+
+//        js.executeScript("document.querySelector('#terms-of-use').click();");
+
+//        var3
+        Rectangle rect = (Rectangle) wd.findElement(By.cssSelector("div.checkbox-container")).getRect();
+        int x = rect.getX() + 5;
+        int y = rect.getY() + rect.getHeight() / 4;
+        Actions actions = new Actions(wd);
+        actions.moveByOffset(x, y).click().perform();
+
+    }
+
+    public void fillRegistrationForm(UserLombok user) {
         type(By.xpath("//input[@id='name']"), user.getName());
         type(By.xpath("//input[@id='lastName']"), user.getLastname());
         type(By.xpath("//input[@id='email']"), user.getEmail());
         type(By.xpath("//input[@id='password']"), user.getPsw());
-        click(By.cssSelector("label[for='terms-of-use']"));
-}
+        //  click(By.cssSelector("label[for='terms-of-use']"));
+        clickCheckbox();
+    }
 //    public void logout() {
 //        wd.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
 //    }
 
     public void submitLogin() {
         wd.findElement(By.xpath("//button[@type='submit']")).submit();
+//        wd.findElement(By.xpath("//button[@type='submit']")).click();
     }
 
     public void logout() {
