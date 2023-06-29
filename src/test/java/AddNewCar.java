@@ -32,7 +32,8 @@ public class AddNewCar extends TestBase{
                 .about("s")
                 .build();
 app.getCar().openFormCar();
-app.getCar().fillCarForm(car);
+//app.getCar().fillCarForm(car);
+app.getCar().fillCarFormByPosit(car);
 app.getUsers().submitLogin();
     }
 
