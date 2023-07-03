@@ -3,12 +3,10 @@ package manager;
 import models.User;
 import models.UserLombok;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 
 public class HelpUser extends HelperBase {
 
@@ -30,10 +28,7 @@ public class HelpUser extends HelperBase {
     public void fillLoginForm(String psd, String email) {
         type(By.xpath("//input[@id='email']"), email);
         type(By.xpath("//input[@id='password']"), psd);
-//        click(By.cssSelector("button[type='submit']"));
-//        pause(500);
-//        wd.findElement(By.xpath("//button[.='Ok']")).submit();
-//        //click(By.xpath("//button[.='Ok']"));
+
 
 
     }
@@ -41,10 +36,7 @@ public class HelpUser extends HelperBase {
     public void fillLoginForm(User user) {
         type(By.xpath("//input[@id='email']"), user.getEmail());
         type(By.xpath("//input[@id='password']"), user.getPsw());
-//        click(By.cssSelector("button[type='submit']"));
-//        pause(500);
-//       // wd.findElement(By.xpath("//button[.='Ok']")).submit();
-//         click(By.xpath("//button[.='Ok']"));
+
 
     }
 
@@ -57,13 +49,10 @@ public class HelpUser extends HelperBase {
     }
 
     public void clickCheckbox() {
-        System.out.println("Hello");
-//  var 1  click(By.cssSelector("label[for='terms-of-use']"));
-
-        //var 2      JavascriptExecutor js = (JavascriptExecutor) wd;
-
+        System.out.println("Hello=");
+//        var 1  click(By.cssSelector("label[for='terms-of-use']"));
+//        var 2      JavascriptExecutor js = (JavascriptExecutor) wd;
 //        js.executeScript("document.querySelector('#terms-of-use').click();");
-
 //        var3
         Rectangle rect = (Rectangle) wd.findElement(By.cssSelector("div.checkbox-container")).getRect();
         int x = rect.getX() + 5;
@@ -81,13 +70,11 @@ public class HelpUser extends HelperBase {
         //  click(By.cssSelector("label[for='terms-of-use']"));
         clickCheckbox();
     }
-//    public void logout() {
-//        wd.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
-//    }
+
 
     public void submitLogin() {
         wd.findElement(By.xpath("//button[@type='submit']")).submit();
-//        wd.findElement(By.xpath("//button[@type='submit']")).click();
+
     }
 
     public void logout() {
@@ -112,39 +99,7 @@ public class HelpUser extends HelperBase {
         submitLogin();
         clickOkButton();
     }
-//    public void precondition(){
-//
-//        if (isElementPresent(By.xpath("//a[contains(text(),'Logout')]"))) {
-//            logout();
-//        }
-//
-//    }
-//
-//
-//    public void postcondition(){
-//        logout();
-//    }
-//    public void Login(User user){
-//     logIn();
-//        fillformYalla(user);
-//
-//    }
-//
-//
-//    public void openregform(){
-//        wd.findElement(By.xpath("//a[.=' Sign up ']")).click();
-//    }
-//
-//    public void regFillForm(User user){
-//        type(By.xpath("//input[@id='name']"), user.getName());
-//        type(By.xpath("//input[@id='lastName']"), user.getLastname());
-//        type(By.xpath("//input[@id='email']"), user.getEmail());
-//        type(By.xpath("//input[@id='password']"), user.getPsw());
-//click(By.cssSelector("label[for='terms-of-use']"));
-//        pause(500);
-//        click(By.cssSelector("button[type='submit']"));
-//        pause(500);
-//    }
+
 
 
 }

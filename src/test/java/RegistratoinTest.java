@@ -20,8 +20,11 @@ public class RegistratoinTest extends TestBase {
         User user = new User().withName("Jaffar").withLastname("safw").withEmail("fon" + i + "@gmail.ru").withPsw("$Asdf1234");
 
         app.getUsers().openRegistationForm();
+        logger.info("openRegistationForm");
         app.getUsers().fillRegistrationForm(user);
+        logger.info("fillRegistrationForm");
         app.getUsers().submitLogin();
+        logger.info("positiveRegist Starts with credentials: login"+user.getEmail()+" Password:  "+ user.getPsw());
         Assert.assertTrue(app.getUsers().isLoggedSuccess());
     }
 
