@@ -9,26 +9,25 @@ import org.testng.ITestResult;
 public class TestNGListener implements ITestListener {
 
 
-
-    Logger logger= LoggerFactory.getLogger(TestNGListener.class);
+    Logger logger = LoggerFactory.getLogger(TestNGListener.class);
 
     @Override
     public void onTestStart(ITestResult result) {
         ITestListener.super.onTestStart(result);
-        logger.info("Test "+ result.getHost() +" started");
+        logger.info("Test " + result.getHost() + " started");
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
         ITestListener.super.onTestSuccess(result);
-        logger.info("Test "+ result.getHost() +" successfull");
+        logger.info("Test " + result.getHost() + " successfull");
 
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);
-        logger.info("Test "+ result.getHost() +" failed: "+result.getThrowable().fillInStackTrace());
+        logger.info("Test " + result.getHost() + " failed: " + result.getThrowable().fillInStackTrace());
 
     }
 
@@ -40,7 +39,7 @@ public class TestNGListener implements ITestListener {
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         ITestListener.super.onTestFailedButWithinSuccessPercentage(result);
-        logger.info("Test "+ result.getHost() +" failed: "+result +result.getThrowable().fillInStackTrace());
+        logger.info("Test " + result.getHost() + " failed: " + result + result.getThrowable().fillInStackTrace());
     }
 
     @Override

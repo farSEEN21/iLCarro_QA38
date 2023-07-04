@@ -13,9 +13,9 @@ import org.testng.annotations.BeforeTest;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-Logger logger= LoggerFactory.getLogger(ApplicationManager.class);
+    Logger logger = LoggerFactory.getLogger(ApplicationManager.class);
 
-//    WebDriver wd;
+    //    WebDriver wd;
     EventFiringWebDriver wd;
     HelpUser users;
     HelperCar car;
@@ -32,7 +32,7 @@ Logger logger= LoggerFactory.getLogger(ApplicationManager.class);
     @BeforeSuite
     public void init() {
 //        wd = new ChromeDriver();
-        wd=new EventFiringWebDriver(new ChromeDriver());
+        wd = new EventFiringWebDriver(new ChromeDriver());
         wd.register(new WDListener());
         users = new HelpUser(wd);
         car = new HelperCar(wd);
