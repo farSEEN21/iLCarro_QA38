@@ -14,27 +14,32 @@ public class LoginTests extends TestBase {
         if(app.getUsers().isLogged()) app.getUsers().logout();
     }
 
-
+@AfterTest
+public void postTest(){
+    if(app.getUsers().isLogged()) app.getUsers().logout();
+}
     @Test
     public void LoginPosit() {
         app.getUsers().openLoginForm();
         app.getUsers().fillLoginForm("x2fd34tjCp!", "xcvv@df.ru");
         app.getUsers().pause(2000);
+        app.getUsers().submitLogin();
         Assert.assertTrue(app.getUsers().isLoggedSuccess());
-        //  app.getUsers().logout();
+//       app.getUsers().logout();
 
     }
 
     @Test
     public void LoginPositUser() {
 //    User user=new User("xcvv@df.ru","x2fd34tjCp");
-        User user = new User().withEmail("x2fd34tjCp").withPsw("xcvv@df.ru");
+        User user = new User().withEmail("xcvv@df.ru").withPsw("x2fd34tjCp!");
         app.getUsers().openLoginForm();
         app.getUsers().fillLoginForm(user.getPsw(), user.getEmail());
-        app.getUsers().pause(2000);
-        Assert.assertTrue(app.getUsers().isLogged());
-        app.getUsers().logout();
-        app.getUsers().pause(2000);
+
+        app.getUsers().submitLogin();
+        Assert.assertTrue(app.getUsers().isLoggedSuccess());
+       //  app.getUsers().logout();
+//        app.getUsers().pause(2000);
     }
 
     @Test
@@ -57,6 +62,7 @@ public class LoginTests extends TestBase {
 
     @AfterMethod
     public void postcond() {
+
         app.getUsers().clickOkButton();
         app.getUsers().pause(2000);
 
