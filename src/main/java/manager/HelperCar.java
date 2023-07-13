@@ -80,9 +80,9 @@ public class HelperCar extends HelperBase {
 
         type(By.id("pickUpPlace"), address);
         click(By.cssSelector("div.pac-item"));
-
-
     }
+
+
 
     public void SelectFuel(By locator, String option) {
         new Select(wd.findElement(locator)).selectByValue(option);

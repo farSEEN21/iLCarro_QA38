@@ -1,3 +1,4 @@
+import manager.ProviderData;
 import manager.TestNGListener;
 import models.User;
 import org.openqa.selenium.By;
@@ -46,6 +47,18 @@ public void postTest(){
     public void LoginPositUserData() {
 
         User user = new User().withPsw("x2fd34tjCp!").withEmail("xcvv@df.ru");
+        app.getUsers().openLoginForm();
+        app.getUsers().fillLoginForm(user);
+        app.getUsers().pause(2000);
+        app.getUsers().submitLogin();
+        Assert.assertTrue(app.getUsers().isLoggedSuccess());
+        //app.getUsers().logout();
+        app.getUsers().pause(2000);
+    }@Test (dataProvider = "UserDTO",dataProviderClass = ProviderData.class)
+    public void LoginPositUserDTO(User user) {
+
+//        User user = new User().withPsw("x2fd34tjCp!").withEmail("xcvv@df.ru");
+
         app.getUsers().openLoginForm();
         app.getUsers().fillLoginForm(user);
         app.getUsers().pause(2000);

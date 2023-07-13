@@ -21,6 +21,7 @@ public class ApplicationManager {
     HelpUser users;
     HelperCar car;
     String browser;
+    HelperSearch seach;
     public ApplicationManager(String browser) {
         this.browser=browser;
     }
@@ -33,7 +34,9 @@ public class ApplicationManager {
         return car;
     }
 
-
+    public HelperSearch getSeach() {
+        return seach;
+    }
 
     @BeforeSuite
     public void init() {
@@ -50,6 +53,7 @@ public class ApplicationManager {
         wd.register(new WDListener());
         users = new HelpUser(wd);
         car = new HelperCar(wd);
+        seach=new HelperSearch(wd);
 //        wd.manage().window().maximize();
         wd.navigate().to("https://ilcarro.web.app/search");
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -60,7 +64,7 @@ public class ApplicationManager {
     @AfterSuite
     public void tears() {
 
-        //   wd.quit();
+           wd.quit();
     }
 
 
