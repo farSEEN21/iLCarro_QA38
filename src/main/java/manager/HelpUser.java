@@ -4,6 +4,7 @@ import models.User;
 import models.UserLombok;
 import org.openqa.selenium.By;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -51,14 +52,15 @@ public class HelpUser extends HelperBase {
     public void clickCheckbox() {
         System.out.println("Hello=");
 //        var 1  click(By.cssSelector("label[for='terms-of-use']"));
-//        var 2      JavascriptExecutor js = (JavascriptExecutor) wd;
-//        js.executeScript("document.querySelector('#terms-of-use').click();");
+//        var 2
+        JavascriptExecutor js = (JavascriptExecutor) wd;
+        js.executeScript("document.querySelector('#terms-of-use').click();");
 //        var3
-        Rectangle rect = (Rectangle) wd.findElement(By.cssSelector("div.checkbox-container")).getRect();
-        int x = rect.getX() + 5;
-        int y = rect.getY() + rect.getHeight() / 4;
-        Actions actions = new Actions(wd);
-        actions.moveByOffset(x, y).click().perform();
+//        Rectangle rect = (Rectangle) wd.findElement(By.cssSelector("div.checkbox-container")).getRect();
+//        int x = rect.getX() + 5;
+//        int y = rect.getY() + rect.getHeight() / 4;
+//        Actions actions = new Actions(wd);
+//        actions.moveByOffset(x, y).click().perform();
 
     }
 

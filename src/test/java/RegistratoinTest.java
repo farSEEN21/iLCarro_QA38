@@ -1,3 +1,4 @@
+import manager.ProviderData;
 import manager.TestNGListener;
 import models.User;
 import models.UserLombok;
@@ -21,6 +22,20 @@ public class RegistratoinTest extends TestBase {
 
         int i = (int) (System.currentTimeMillis() / 1000) % 3600;
         User user = new User().withName("Jaffar").withLastname("safw").withEmail("fon" + i + "@gmail.ru").withPsw("$Asdf1234");
+
+        app.getUsers().openRegistationForm();
+        logger.info("openRegistationForm");
+        app.getUsers().fillRegistrationForm(user);
+        logger.info("fillRegistrationForm");
+        app.getUsers().submitLogin();
+        logger.info("positiveRegist Starts with credentials: login"+user.getEmail()+" Password:  "+ user.getPsw());
+        Assert.assertTrue(app.getUsers().isLoggedSuccess());
+    }
+   @Test(dataProvider = "UserDTOCSV",dataProviderClass = ProviderData.class  )
+    public void positiveRegistDTO(User user) {
+
+//        int i = (int) (System.currentTimeMillis() / 1000) % 3600;
+//        User user = new User().withName("Jaffar").withLastname("safw").withEmail("fon" + i + "@gmail.ru").withPsw("$Asdf1234");
 
         app.getUsers().openRegistationForm();
         logger.info("openRegistationForm");
