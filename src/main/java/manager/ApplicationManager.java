@@ -12,6 +12,11 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
@@ -23,6 +28,7 @@ public class ApplicationManager {
     String browser;
     HelperSearch seach;
     public ApplicationManager(String browser) {
+        properties=new Properties();
         this.browser=browser;
     }
 
@@ -34,12 +40,22 @@ public class ApplicationManager {
         return car;
     }
 
+   private Properties properties;
+
+public String getemail(){
+    return properties.getProperty("web.email");
+}public String getpsw(){
+    return properties.getProperty("web.password");
+}
     public HelperSearch getSeach() {
         return seach;
     }
 
     @BeforeSuite
-    public void init() {
+    public void init() throws IOException {
+//        properties.load(new FileReader(new File("src/test/resources/prod.properties")));
+        String target=System.getProperty("target", "prod");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
         if (browser.equals(BrowserType.CHROME)) {
             wd = new EventFiringWebDriver(new ChromeDriver());
             logger.info("Tests start on Chrome");
@@ -55,7 +71,8 @@ public class ApplicationManager {
         car = new HelperCar(wd);
         seach=new HelperSearch(wd);
 //        wd.manage().window().maximize();
-        wd.navigate().to("https://ilcarro.web.app/search");
+//        wd.navigate().to("https://ilcarro.web.app/search");
+        wd.navigate().to(properties.getProperty("web.baseURL"));
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
     }

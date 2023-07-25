@@ -41,6 +41,17 @@ public void postTest(){
         Assert.assertTrue(app.getUsers().isLoggedSuccess());
        //  app.getUsers().logout();
 //        app.getUsers().pause(2000);
+    }    @Test
+    public void LoginPositProps() {
+//
+
+        app.getUsers().openLoginForm();
+        app.getUsers().fillLoginForm(app.getpsw(), app.getemail());
+
+        app.getUsers().submitLogin();
+        Assert.assertTrue(app.getUsers().isLoggedSuccess());
+       //  app.getUsers().logout();
+//        app.getUsers().pause(2000);
     }
 
     @Test
